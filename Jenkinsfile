@@ -1,11 +1,27 @@
-Jenkinsfile (Declarative Pipeline)
+/* Jenkinsfile (Declarative Pipeline) */
 /* Requires the Docker Pipeline plugin */
+/* pipeline {*/
+/*    agent { docker { image 'php:8.3.0-alpine3.19' } }*/
+/*    stages {*/
+/*        stage('build') {*/
+/*            steps {*/
+/*                sh 'php --version'*/
+/*            }*/
+/*        }*/
+/*    }*/
+/*}*/
+
+Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'php:8.3.0-alpine3.19' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'php --version'
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
             }
         }
     }
